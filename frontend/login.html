@@ -1,0 +1,45 @@
+<!-- login.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Login - Farmc</title>
+  <link rel="stylesheet" href="styles.css">
+  <script type="module" src="services.js"></script> <!-- Import the services.js file -->
+</head>
+<body>
+  <div class="container">
+    <img src="https://your-image-hosting.com/farmc-logo.png" alt="Farmc Logo">
+    <h1>Farmc</h1>
+    <p>Marketplace</p>
+
+    <h2>Login</h2>
+    <form id="loginForm">
+      <input type="email" id="email" placeholder="Email" required><br>
+      <input type="password" id="password" placeholder="Password" required><br>
+      <button type="submit">Login</button>
+    </form>
+    <p>Don’t have an account? <a href="register.html">Register here</a></p>
+  </div>
+
+  <script>
+    // Add event listener for form submission
+    document.getElementById('loginForm').addEventListener('submit', async function (event) {
+      event.preventDefault(); // Prevent default form submission
+
+      const email = document.getElementById('email').value;
+      const password = document.getElementById('password').value;
+
+      try {
+        // Call the loginUser function from services.js
+        const response = await loginUser(email, password);
+        alert('Login successful!');
+        // Redirect to dashboard or home page
+        window.location.href = "dashboard.html"; 
+      } catch (error) {
+        alert('Error: ' + error.message);
+      }
+    });
+  </script>
+</body>
+</html>

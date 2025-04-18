@@ -1,0 +1,47 @@
+<!-- register.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Register - Farmc</title>
+  <link rel="stylesheet" href="styles.css">
+  <script type="module" src="services.js"></script> <!-- Import the services.js file -->
+</head>
+<body>
+  <div class="container">
+    <img src="https://your-image-hosting.com/farmc-logo.png" alt="Farmc Logo">
+    <h1>Farmc</h1>
+    <p>Marketplace</p>
+
+    <h2>Register</h2>
+    <form id="registerForm">
+      <input type="text" id="name" placeholder="Full Name" required><br>
+      <input type="email" id="email" placeholder="Email" required><br>
+      <input type="password" id="password" placeholder="Password" required><br>
+      <button type="submit">Sign Up</button>
+    </form>
+    <p>Already have an account? <a href="login.html">Login here</a></p>
+  </div>
+
+  <script>
+    // Add event listener for form submission
+    document.getElementById('registerForm').addEventListener('submit', async function (event) {
+      event.preventDefault(); // Prevent default form submission
+
+      const name = document.getElementById('name').value;
+      const email = document.getElementById('email').value;
+      const password = document.getElementById('password').value;
+
+      try {
+        // Call the registerUser function from services.js
+        const response = await registerUser(name, email, password);
+        alert('Registration successful!');
+        // Redirect to login page or home page
+        window.location.href = "login.html"; 
+      } catch (error) {
+        alert('Error: ' + error.message);
+      }
+    });
+  </script>
+</body>
+</html>
